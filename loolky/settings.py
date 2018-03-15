@@ -38,9 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'demoapp',
     'corsheaders',
-    'user_info'
+    'reviews',
+    'blogs',
+    'accounts'
 ]
 
 MIDDLEWARE = [
@@ -81,13 +82,17 @@ WSGI_APPLICATION = 'loolky.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'loolky',
-        'USER': 'root',
-        'PASSWORD': 'al81is22te',
-        'HOST': 'localhost',
-        'PORT': ''
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'loolky_db',
+    #     'USER': 'root',
+    #     'PASSWORD': 'al81is22te',
+    #     'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+    #     'PORT': '3306',
+    # }
 }
 
 
@@ -108,6 +113,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+AUTH_USER_MODEL = 'accounts.Profile'
 
 
 # Internationalization
@@ -136,5 +143,5 @@ STATICFILES_DIRS = [
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = '/root/django-loolky/loolky/demoapp/static'
+#STATIC_ROOT = '/root/django-loolky/loolky/demoapp/static'
 

@@ -13,15 +13,24 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
+from django.conf.urls import url
 from django.contrib import admin
-
+from demoapp.views import home
+from demoapp.views import example
+from demoapp.views import users
+from demoapp import views
 
 CORS_ORIGIN_ALLOW_ALL = True
 
 urlpatterns = [
+    url(r'^$', home, name='home'),
+
+    #url(r'^api/login/(?P<email>\w{0,50})/(?P<password>\w{0,50})/$', views.login, name='login'),
+    url(r'^api/login/(?P<email>[\w.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4})/(?P<password>\w{0,50})/$', views.login, name='login'),
+
+    url(r'^api/users/(?P<email>\w{0,50})/(?P<password>\w{0,50})/$', users, name='users'),
+
+    url(r'^example/', example, name='example'),
+
     url(r'^admin/', admin.site.urls),
-    url(r'^accounts/', include('accounts.urls')),
-    url(r'^reviews/', include('reviews.urls')),
-    url(r'^blogs/', include('blogs.urls'))
 ]
