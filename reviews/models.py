@@ -1,4 +1,5 @@
 from django.db import models
+import django.utils.timezone
 
 
 class Review(models.Model):
@@ -7,7 +8,7 @@ class Review(models.Model):
     product_id = models.ForeignKey('Product', on_delete=models.CASCADE)
 
     info = models.TextField()
-    created_date = models.DateField(null=False, blank=False)
+    created_date = models.DateField(default=django.utils.timezone.now)
     rate = models.PositiveSmallIntegerField()
     purchase_price = models.DecimalField(max_digits=10, decimal_places=2)
     pictures = models.CharField(max_length=40)
@@ -28,4 +29,4 @@ class Feedback(models.Model):
 
     info = models.TextField()
     rate = models.PositiveSmallIntegerField()
-    date = models.DateField(null=False, blank=False)
+    date = models.DateField(default=django.utils.timezone.now)

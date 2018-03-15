@@ -21,7 +21,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^accounts/', include('accounts.urls')),
-    url(r'^reviews/', include('reviews.urls')),
-    url(r'^blogs/', include('blogs.urls'))
+    url(r'^api/accounts/', include('accounts.urls')),
+    url(r'^api/reviews/', include('reviews.urls')),
+    url(r'^api/blogs/', include('blogs.urls'))
 ]

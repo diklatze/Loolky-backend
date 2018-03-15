@@ -21,12 +21,11 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-    #url(r'^signup/(\d+)/(\d+)/(\d+)/(\d+)/(\d+)/', views.user_signup, name='user_signup'),
-    url(r'^signup/(?P<username>[\w\-]+)/(?P<first_name>[\w\-]+)/(?P<last_name>[\w\-]+)/(?P<password>[\w\-]+)/(?P<email>[\w\-]+)/', views.user_signup, name='user_signup'),
-    url(r'^update_user/', views.user_update, name='user_update'),
-    url(r'^delete_user/', views.user_delete, name='user_delete'),
+    url(r'^signup/', views.user_signup, name='user_signup'),
+    url(r'^signup_done/', views.user_signup_done, name='user_signup_done'),
+    url(r'^user_update/', views.user_update, name='user_update'),
     url(r'^login/', views.user_login, name='user_login'),
     url(r'^logout/', views.user_logout, name='user_logout'),
-    url(r'^password_change/', views.password_change, name='password_change'),
-    url(r'^password_reset/', views.password_reset, name='password_reset')
+    url(r'^change_password/', views.change_password, name='change_password'),
+    url(r'^reset_password/', views.reset_password, name='reset_password')
 ]
